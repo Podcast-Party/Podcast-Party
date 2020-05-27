@@ -6,6 +6,7 @@
     "source": "functions"
   },
   "hosting": {
+    "site": "earbuds",
     "public": "public",
     "ignore": [
       "firebase.json",
