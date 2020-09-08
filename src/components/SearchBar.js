@@ -31,7 +31,7 @@ const SearchBar = (props) => {
     getPlaylist("37i9dQZF1DXdlkPQJ1PlTQ", token).then((res) =>
       setPopularPodcasts(res)
     )
-    getPlaylist("37i9dQZF1DX0sZ6o42ll0w", token).then((res) =>
+    getPlaylist("37i9dQZF1DX9ZH7giqcZYH", token).then((res) =>
       setSelectedPodcasts(res)
     )
     getPlaylist("37i9dQZF1EnOBYmteT8p3O", token).then((res) =>
