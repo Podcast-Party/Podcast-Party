@@ -286,14 +286,15 @@ export const getPlaylist = async (playlistId, token) => {
     }
   )
   const ppJSON = await response.json()
-
   if (ppJSON.items) {
-    return await ppJSON.items.map((item) => {
-      return {
-        uri: item.track.uri,
-        name: item.track.name,
-        image: item.track.album.images[1].url,
-        id: item.track.id,
+    return ppJSON.items.map((item) => {
+      if (item.track) {
+        return {
+          uri: item.track.uri,
+          name: item.track.name,
+          image: item.track.album.images[1].url,
+          id: item.track.id,
+        }
       }
     })
   }

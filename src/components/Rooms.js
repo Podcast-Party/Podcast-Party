@@ -8,6 +8,7 @@ import Box from "@material-ui/core/Box"
 import TextField from "@material-ui/core/TextField"
 import "./App.css"
 import Sdk from "./Sdk"
+import bitmap from "./bitmap.png"
 
 class Rooms extends React.Component {
   constructor() {
@@ -94,6 +95,11 @@ class Rooms extends React.Component {
     return (
       <div>
         <div className="App-header">
+          <img
+            src={bitmap}
+            alt=""
+            style={{ width: "500px", paddingBottom: "75px" }}
+          />
           <Sdk token={this.props.access_token} />
           <Box display="flex" justifyContent="center">
             <Box m={5} display="inline">

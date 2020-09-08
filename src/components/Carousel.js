@@ -37,8 +37,6 @@ const MyCarousel = (props) => {
     <div className="all-carousels">
       {carousels.map((carousel) => (
         <div className="single-carousel">
-          {/* <div className="playlist-name">{carousel.title}</div> */}
-
           <Typography
             color="textSecondary"
             style={{
