@@ -131,7 +131,6 @@ export async function findRoom(roomCode) {
   currentRoom.forEach((el) => {
     res = el.id
   })
-  console.log("currentroom", res, currentRoom)
   return res
 }
 
@@ -276,7 +275,8 @@ export async function playbackStart(roomId, username) {
 }
 
 export const getPlaylist = async (playlistId, token) => {
-  const response = await fetch(
+  try {
+    const response = await fetch(
     `https://api.spotify.com/v1/playlists/${playlistId}/tracks?limit=10`,
     {
       method: "GET",
@@ -285,17 +285,20 @@ export const getPlaylist = async (playlistId, token) => {
       },
     }
   )
-  const ppJSON = await response.json()
-  if (ppJSON.items) {
-    return ppJSON.items.map((item) => {
-      if (item.track) {
-        return {
-          uri: item.track.uri,
-          name: item.track.name,
-          image: item.track.album.images[1].url,
-          id: item.track.id,
+    const ppJSON = await response.json()
+    if (ppJSON.items) {
+      return ppJSON.items.map((item) => {
+        if (item.track) {
+          return {
+            uri: item.track.uri,
+            name: item.track.name,
+            image: item.track.album.images[1].url,
+            id: item.track.id,
+          }
         }
-      }
-    })
+      })
+    }
+  } catch (err) {
+    console.error(err)
   }
 }

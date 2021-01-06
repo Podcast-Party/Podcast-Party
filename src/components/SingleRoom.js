@@ -23,6 +23,7 @@ const SingleRoom = (props) => {
   const [anchorEl, setAnchorEl] = useState(null)
   const [users, setUsers] = useState([])
   const [alert, setAlert] = useState(false)
+  const [roomCode, setRoomCode] = useState(props.roomCode)
 
   const getNewUsers = async () => {
     await db
@@ -151,6 +152,7 @@ const SingleRoom = (props) => {
                         type="text"
                         value={props.roomCode}
                         id="room-code"
+                        disabled
                       ></input>
                       <Button
                         onClick={() => currentRoomCode()}

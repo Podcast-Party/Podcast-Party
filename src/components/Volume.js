@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import Grid from "@material-ui/core/Grid"
 import Typography from "@material-ui/core/Typography"
 import Slider from "@material-ui/core/Slider"
@@ -11,8 +11,9 @@ const Volume = (props) => {
   const deviceId = props.deviceId
   let [volume, setVolume] = useState(30)
   const volumeChanger = async (event, vol) => {
-    setVolume(vol)
-    const setVol = await fetch(
+    try {
+      setVolume(vol)
+    await fetch(
       `https://api.spotify.com/v1/me/player/volume?volume_percent=${vol}&device_id=${deviceId}`,
       {
         method: "PUT",
@@ -21,6 +22,9 @@ const Volume = (props) => {
         },
       }
     )
+    } catch (err) {
+      console.error(err)
+    }
   }
 
   return (

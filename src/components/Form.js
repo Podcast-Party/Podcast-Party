@@ -29,7 +29,7 @@ const Form = (props) => {
 
   return (
     <div>
-      <form onSubmit={onSubmit} autocomplete="off" id="message-form">
+      <form onSubmit={onSubmit} autoComplete="off" id="message-form">
         <TextField
           name="message"
           placeholder="Message"

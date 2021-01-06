@@ -1,7 +1,8 @@
 import axios from "axios"
 import queryString from "querystring"
 
-const redirectUri = "https://earbuds.web.app"
+// const redirectUri = "https://earbuds.web.app"
+const redirectUri = "http://localhost:3000"
 const clientId = process.env.REACT_APP_CLIENT_ID
 const clientSecret = process.env.REACT_APP_CLIENT_SECRET
 const scopes =

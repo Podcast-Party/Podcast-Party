@@ -27,16 +27,19 @@ const SearchBar = (props) => {
   let [selectedPodcasts, setSelectedPodcasts] = useState([{}])
   let [dailyPlaylist, setDailyPlaylist] = useState([{}])
 
+  const getAllPlaylists = async () => {
+    const [popular, selected, daily] = await Promise.all([
+      getPlaylist("37i9dQZF1DX0sZ6o42ll0w", token),
+      getPlaylist("37i9dQZF1DX9ZH7giqcZYH", token),
+      getPlaylist("37i9dQZF1EnOBYmteT8p3O", token)
+    ])
+      setPopularPodcasts(popular)
+      setSelectedPodcasts(selected)
+      setDailyPlaylist(daily)
+  }
+
   useEffect(() => {
-    getPlaylist("37i9dQZF1DXdlkPQJ1PlTQ", token).then((res) =>
-      setPopularPodcasts(res)
-    )
-    getPlaylist("37i9dQZF1DX9ZH7giqcZYH", token).then((res) =>
-      setSelectedPodcasts(res)
-    )
-    getPlaylist("37i9dQZF1EnOBYmteT8p3O", token).then((res) =>
-      setDailyPlaylist(res)
-    )
+    getAllPlaylists()
   }, [])
 
   const searchHandler = async () => {
@@ -44,7 +47,7 @@ const SearchBar = (props) => {
 
     let searchArr = [{ value: "chocolate", label: "Start typing..." }]
 
-    if (res.shows) {
+    if (res && res.shows) {
       searchArr = res.shows.items.map((item) => {
         return { value: item.id, label: item.name }
       })
@@ -55,14 +58,16 @@ const SearchBar = (props) => {
   const handleChange = async (event) => {
     const value = event.target.value
 
-    getEpisode(value, token).then((res) =>
-      changeQueue(
+    getEpisode(value, token).then((res) => {
+      res && changeQueue(
         props.roomId,
         res,
         value,
         props.userData.display_name,
         result[0]
       )
+    }
+      
     )
   }
 
@@ -74,7 +79,7 @@ const SearchBar = (props) => {
   const getEpisodes = async () => {
     fetchShows(search, token, 1)
       .then((res) => {
-        if (res.shows) {
+        if (res && res.shows) {
           if (res.shows.items) {
             result = res.shows.items.map((item) => {
               return item.id
@@ -133,7 +138,7 @@ const SearchBar = (props) => {
                 activeSearch(target.value)
                 getEpisodes()
               }}
-              label="Search input"
+              label="Start typing to find a podcast..."
               size="small"
               margin="dense"
               variant="filled"
@@ -144,7 +149,7 @@ const SearchBar = (props) => {
       {episodes.length > 1 ? (
         <div>
           <FormControl
-            fullWidth="true"
+            fullWidth={true}
             size="small"
             margin="dense"
             variant="filled"
@@ -171,13 +176,13 @@ const SearchBar = (props) => {
       ) : (
         <div>
           <FormControl
-            disabled="true"
-            fullWidth="true"
+            disabled={true}
+            fullWidth={true}
             size="small"
             margin="dense"
             variant="filled"
           >
-            <InputLabel>Select Show from Above</InputLabel>
+            <InputLabel>Select an Episode</InputLabel>
             <Select
               native
               value={`Select Show from Above`}

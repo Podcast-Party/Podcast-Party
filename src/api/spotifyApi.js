@@ -114,8 +114,9 @@ export const getEpisode = async (id, token) => {
 
 export const fetchShows = async (search, token, num) => {
   try {
-    const q = encodeURIComponent(`${search}`);
-    const response = await fetch(
+    if (search) {
+       const q = encodeURIComponent(`${search}`);
+       const response = await fetch(
       `https://api.spotify.com/v1/search?q=${q}&type=show&market=US&limit=${num}`,
       {
         method: "GET",
@@ -124,8 +125,10 @@ export const fetchShows = async (search, token, num) => {
         },
       }
     );
-    const searchJSON = await response.json();
-    return searchJSON;
+        const searchJSON = await response.json();
+        return searchJSON;
+    }
+   
   } catch (err) {
     console.log(err);
   }
@@ -133,17 +136,19 @@ export const fetchShows = async (search, token, num) => {
 
 export const fetchEpisodes = async (result, token) => {
   try {
-    const episodes = await fetch(
-      `https://api.spotify.com/v1/shows/${result}/episodes?limit=49`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    const episodesJSON = await episodes.json();
-    return episodesJSON;
+    if (typeof result[0] === 'string') {
+        const episodes = await fetch(
+        `https://api.spotify.com/v1/shows/${result[0]}/episodes?limit=49`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      const episodesJSON = await episodes.json();
+      return episodesJSON;
+    }
   } catch (err) {
     console.log(err);
   }

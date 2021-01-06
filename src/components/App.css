@@ -18,9 +18,7 @@ body {
     animation: App-logo-spin infinite 20s linear;
   }
 }
-#room {
-  background-image: url("https://i.pinimg.com/originals/70/b4/d4/70b4d4080fc2cdb4bd1c70802148c3c0.jpg");
-}
+
 #paper {
   width: 180px;
   height: 150px;
@@ -152,7 +150,6 @@ body.dark-mode .social-media-text {
 }
 
 .App-header {
-  background-image: url("https://bamcommunications.biz/wp-content/uploads/2018/10/bam-animations-v05-line2.gif");
   background-color: rgb(174, 192, 199);
   background-repeat: no-repeat;
   background-position: top center;
@@ -311,6 +308,43 @@ button {
   margin-bottom: 2.5%;
 }
 
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column-reverse;
+    align-items: center;
+    margin-left: 2rem;
+    width: 90%;
+  }
+  .right-box,
+  .left-box {
+    width: 100% !important;
+    margin: 2.5%;
+  }
+
+  .left-box {
+    padding: 0;
+  }
+  .users-container {
+    height: auto !important;
+  }
+  .panel {
+    margin-right: 0.25rem;
+  }
+}
+
+@media (max-width: 414px) {
+  .panel,
+  .left-box {
+    margin-right: 1.5rem;
+  }
+  .all-carousels {
+    display: none !important;
+  }
+  .main-container {
+    margin-left: 1.65rem;
+  }
+}
+
 #messages-container {
   display: flex;
   flex-direction: column;
@@ -416,6 +450,20 @@ button {
   border-radius: 4px;
 }
 
+@media (max-width: 1300px) {
+  .playlist-name {
+    display: none;
+  }
+}
+
+.carousel .control-prev.control-arrow {
+  margin-left: 0 !important;
+}
+
+.carousel .control-next.control-arrow {
+  margin-right: 0 !important;
+}
+
 .panel {
   /* height: 100%; */
   display: flex;
@@ -427,9 +475,7 @@ button {
   overflow: scroll;
 }
 .carousel .control-dots .dot {
-  width: 3px;
-  height: 3px;
-  opacity: 0;
+  display: none !important;
 }
 .carousel .control-dots .dot.selected {
   opacity: 0;
@@ -462,6 +508,7 @@ button {
 
 .carousel .slide .legend {
   opacity: 0;
+  bottom: 1px !important;
 }
 
 div {

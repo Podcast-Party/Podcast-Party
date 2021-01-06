@@ -18,27 +18,42 @@ const MyCarousel = (props) => {
       )
     )
   }
-  const carousels = [
-    {
+  let carousels = [
+    { 
+      id: 1,
       title: "Popular Podcasts",
       data: props.podcasts,
     },
     {
+      id: 2,
       title: "Podcast Essentials",
       data: props.playlist,
     },
     {
+      id: 3,
       title: "Your Daily Picks",
       data: props.dailyPodcasts,
     },
   ]
+  console.log(carousels)
+  const isReady = () => {
+    let ready = true
+    //Check if all of the podcasts loaded
+    carousels.forEach(c => {
+      if (!Object.keys(c.data).length) {
+        ready = false
+      }
+    })
+    return ready
+  }
 
   return (
     <div className="all-carousels">
       {carousels.map((carousel) => (
-        <div className="single-carousel">
+        <div key={carousel.id} className="single-carousel">
           <Typography
             color="textSecondary"
+            className="playlist-name"
             style={{
               whiteSpace: "nowrap",
               overflow: "hidden",
@@ -49,12 +64,13 @@ const MyCarousel = (props) => {
           </Typography>
 
           <Carousel autoPlay showThumbs={false} infiniteLoop={true}>
-            {carousel.data.map((podcast) => (
-              <div onClick={() => onCarouselClick(podcast)}>
+            {carousel.data && carousel.data.map((podcast) => {
+              return podcast && 
+              <div key={podcast.id} onClick={() => onCarouselClick(podcast)}>
                 <img alt="" src={podcast.image} />
                 <p className="legend">{podcast.name}</p>
               </div>
-            ))}
+            })}
           </Carousel>
         </div>
       ))}

@@ -1,7 +1,5 @@
-import LinearProgress from "@material-ui/core/LinearProgress";
 import { connect } from "react-redux";
-
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { setPosition } from "../redux/store";
 
 const Ticker = (props) => {
@@ -18,7 +16,7 @@ const Ticker = (props) => {
     props.setPosition(seconds);
   }, [seconds]);
 
-  return <div></div>;
+  return
 };
 
 const stateToProps = (state) => ({
@@ -31,4 +29,3 @@ const dispatchToProps = (dispatch) => ({
 
 export default connect(stateToProps, dispatchToProps)(Ticker);
 
-// export default Ticker;

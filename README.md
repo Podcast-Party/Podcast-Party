@@ -1,4 +1,5 @@
 # EarBuds
+
 Web app for friends to listen to podcasts together in real time
 
 Checkout our [deployed app](https://earbuds.web.app/)
@@ -8,13 +9,16 @@ Our Capstone [Presentation Video](https://www.youtube.com/watch?v=P83c1WjfAOk&li
 ## Getting Started
 
 ### Prerequisites
-Spotify 
-* Premium account for music playback
-* Spotify developer account for API keys and API request management
+
+Spotify
+
+- Premium account for music playback
+- Spotify developer account for API keys and API request management
 
 Google Cloud Firebase/Firestore
-* Obtain secret keys
-* Create a new project
+
+- Obtain secret keys
+- Create a new project
 
 Create a secrets file and add keys accordingly
 
@@ -22,7 +26,7 @@ Create a secrets file and add keys accordingly
 
 In the project directory, you can run:
 
- `npm start`
+`npm start`
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -42,7 +46,22 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
+### Firebase Hosting
+
+Make sure to be logged into Firebase CLI:
+
+`firebase login`
+
+Go to /src:
+
+`cd src`
+
+Run the following command:
+
+`firebase deploy --only hosting:earbuds`
+
 ## Authors
+
 [Alona Trekhlib](https://github.com/trekhleb123)
 
 [Shreya Wadhwa](https://github.com/swadhwa369)
@@ -50,4 +69,3 @@ Your app is ready to be deployed!
 [Michael Hammer](https://github.com/mhammer708)
 
 [Justin Davidson](https://github.com/JDavidson45)
-
