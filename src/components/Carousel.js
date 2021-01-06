@@ -35,7 +35,7 @@ const MyCarousel = (props) => {
       data: props.dailyPodcasts,
     },
   ]
-  console.log(carousels)
+
   const isReady = () => {
     let ready = true
     //Check if all of the podcasts loaded
