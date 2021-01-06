@@ -337,7 +337,8 @@ button {
   .left-box {
     margin-right: 1.5rem;
   }
-  .all-carousels {
+  .all-carousels,
+  .light-dark {
     display: none !important;
   }
   .main-container {

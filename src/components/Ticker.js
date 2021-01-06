@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { setPosition } from "../redux/store";
 
 const Ticker = (props) => {
@@ -16,7 +16,7 @@ const Ticker = (props) => {
     props.setPosition(seconds);
   }, [seconds]);
 
-  return
+  return <></>
 };
 
 const stateToProps = (state) => ({

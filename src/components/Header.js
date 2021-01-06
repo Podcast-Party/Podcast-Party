@@ -47,13 +47,13 @@ const Header = (props) => {
       >
         Leave Room
       </Button>
-      <div style={{ margin: "7px 2.5%" }}>
+      <div style={{ marginRight: "1rem" }}>
         <Grid component="label" container alignItems="center" spacing={1}>
-          <Grid item>Light</Grid>
+          <Grid item className="light-dark">Light</Grid>
           <Grid item>
             <SwitchStyle checked={darkMode.value} onChange={toggleDarkMode} />
           </Grid>
-          <Grid item>Dark</Grid>
+          <Grid item className="light-dark">Dark</Grid>
         </Grid>
       </div>
     </div>
